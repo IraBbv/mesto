@@ -1,0 +1,34 @@
+.form__submit-button {
+    all: unset;
+    margin: 45px 22px 25px;
+    /*width: calc(100% - 44px);*/
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #fff;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    /*padding: 14px 82px;*/
+    background: #000;
+    border-radius: 2px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .form__submit-button {
+        margin-left: 28px;
+        margin-right: 28px;
+        margin-bottom: 30px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .form__submit-button {
+        margin: 48px 36px 37px;
+    }
+}
