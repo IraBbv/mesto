@@ -1,0 +1,8 @@
+.card__description {
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: calc(100% - 40px);
+    padding: 0 20px;
+}

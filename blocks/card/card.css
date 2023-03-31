@@ -1,0 +1,13 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .card {
+        margin-bottom: 0;
+        min-width: 282px;
+    }
+}
