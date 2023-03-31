@@ -1,5 +1,6 @@
 .page {
     font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
@@ -15,7 +16,8 @@
 
 @media screen and (min-width:1024px) {
     .page {
-        padding: 0 200px;
+        padding-left: 140px;
+        padding-right: 140px;
     }
 }
 
@@ -23,5 +25,7 @@
     .page {
         max-width: 1280px;
         margin: 0 auto;
+        padding-left: 200px;
+        padding-right: 200px;
     }
 }
