@@ -9,7 +9,7 @@ let formDescription = popup.querySelector('.form__description');
 let closeBtn = popup.querySelector('.form__close-icon');
 let submitBtn = popup.querySelector('.form__submit-button');
 
-formName.textContent = profileName.value;
+formName.value = profileName.textContent;
 formDescription.value = profileDescription.textContent;
 
 function openPopup() {
@@ -29,8 +29,9 @@ popup.addEventListener('click', closePopup);
 function handleFormSubmit (evt) {
     evt.preventDefault();
     
-    profileName.insertAdjacentText = formName.value;
-
+    profileName.innerHTML = formName.value;
+    profileDescription.innerHTML = formDescription.value;
+    
     popup.classList.add('popup_hidden');
 }
 

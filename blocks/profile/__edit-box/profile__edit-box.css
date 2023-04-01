@@ -1,0 +1,10 @@
+.profile__edit-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 23px auto 0;
+    justify-self: center;
+    position: relative;
+    width: fit-content;
+}
