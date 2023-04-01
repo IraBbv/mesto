@@ -35,6 +35,4 @@ function handleFormSubmit (evt) {
     popup.classList.add('popup_hidden');
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
 submitBtn.addEventListener('click', handleFormSubmit);
