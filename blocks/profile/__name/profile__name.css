@@ -4,12 +4,15 @@
     line-height: 33px;
     width: fit-content;
     margin: 23px auto 0;
+    text-align: center;
+    position: relative;
 }
 
 @media screen and (min-width: 768px) {
     .profile__name {
         font-size: 34px;
         line-height: 40px;
+        text-align: left;
     }
 }
 
