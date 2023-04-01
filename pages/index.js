@@ -9,7 +9,7 @@ let formDescription = popup.querySelector('.form__description');
 let closeBtn = popup.querySelector('.form__close-icon');
 let submitBtn = popup.querySelector('.form__submit-button');
 
-formName.value = profileName.textContent;
+formName.textContent = profileName.value;
 formDescription.value = profileDescription.textContent;
 
 function openPopup() {
@@ -28,11 +28,10 @@ popup.addEventListener('click', closePopup);
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
-    return (
-        profileDescription.value = formDescription.textContent,
-        profileName.value = formName.textContent
-      );
-    //popup.classList.add('popup_hidden');
+    
+    profileName.insertAdjacentText = formName.value;
+
+    popup.classList.add('popup_hidden');
 }
 
 // Прикрепляем обработчик к форме:
