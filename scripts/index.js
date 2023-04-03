@@ -5,7 +5,7 @@ let editBtn = document.querySelector('.profile__edit-button');
 
 let popup = document.querySelector('.popup');
 let formElement = popup.querySelector('.form');
-let closeBtn = popup.querySelector('.form__close-icon');
+let closeBtn = popup.querySelector('.popup__close-icon');
 let formName = popup.querySelector('.form__input_type_name');
 let formDescription = popup.querySelector('.form__input_type_description');
 
