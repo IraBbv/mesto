@@ -1,9 +1,5 @@
 .form__submit-button {
-    all: unset;
     margin: 45px 22px 25px;
-    /*width: calc(100% - 44px);*/
-    font-family: 'Inter', Arial, sans-serif;
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -11,9 +7,10 @@
     color: #fff;
     padding-top: 14px;
     padding-bottom: 14px;
-    /*padding: 14px 82px;*/
     background: #000;
     border-radius: 2px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
 }
 
 .form__submit-button:hover {
@@ -33,5 +30,7 @@
 @media screen and (min-width: 1024px) {
     .form__submit-button {
         margin: 48px 36px 37px;
+        font-size: 18px;
+        line-height: 22px;
     }
 }

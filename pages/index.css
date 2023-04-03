@@ -1,5 +1,5 @@
 @import url(../vendor/normalize.css);
-@import url(../vendor/Inter-font/inter.css);
+@import url(../vendor/fonts/fonts.css);
 
 @import url(../blocks/root/root.css);
 @import url(../blocks/page/page.css);
@@ -7,7 +7,6 @@
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-@import url(../blocks/header/__line/header__line.css);
 
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
@@ -30,10 +29,12 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/_hidden/popup_hidden.css);
+@import url(../blocks/popup/_open/popup_open.css);
+@import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__close-icon/form__close-icon.css);
 @import url(../blocks/form/__title/form__title.css);
-@import url(../blocks/form/__name/form__name.css);
-@import url(../blocks/form/__description/form__description.css);
+@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__input/_type/form__input_type_name.css);
+@import url(../blocks/form/__input/_type/form__input_type_description.css);
 @import url(../blocks/form/__submit-button/form__submit-button.css);

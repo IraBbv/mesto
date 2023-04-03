@@ -8,3 +8,9 @@
     position: relative;
     width: fit-content;
 }
+
+@media all and (min-width: 768px) {
+    .profile__edit-box {
+        margin-left: 0;
+    }
+}

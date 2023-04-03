@@ -1,8 +1,11 @@
 .form__close-icon {
+    all: unset;
     position: absolute;
     top: -36px;
     right: 0;
     width: 20px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
 }
 
 .form__close-icon:hover {

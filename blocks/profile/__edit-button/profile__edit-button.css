@@ -1,9 +1,11 @@
 .profile__edit-button {
+    all: unset;
     width: 18px;
-    height: 18px;
     position: absolute;
     top: 25%;
     right: -28px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
 }
 
 .profile__edit-button:hover {
@@ -13,13 +15,14 @@
 @media screen and (min-width: 768px) {
     .profile__edit-button {
         width: 20px;
+        position: static;
+        margin-left: 10px;
     }
 }
 
 @media screen and (min-width: 1024px) {
     .profile__edit-button {
+        margin-left: 18px;
         width: 24px;
-        height: 24px;
-        right: -42px;
     }
 }

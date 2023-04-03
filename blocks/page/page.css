@@ -5,6 +5,7 @@
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
     position: relative;
+    min-width: 320px;
 }
 
 @media screen and (min-width: 768px) {

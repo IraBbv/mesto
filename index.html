@@ -12,7 +12,6 @@
     <div class="page">
       <header class="header">
         <img src="./images/logo.svg" alt="Лого Место." class="header__logo">
-        <div class="header__line"></div>
       </header>
       <main class="content">
         <section class="profile">
@@ -20,53 +19,53 @@
           <div class="profile__info">
             <div class="profile__edit-box">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <img class="profile__edit-button" src="./images/edit-btn.svg" alt="Карандаш в рамке.">
+              <button type="button" class="profile__edit-button"><img src="./images/edit-btn.svg" alt="Карандаш в рамке."></button>
             </div>
             <p class="profile__description">Исследователь океана</p>
           </div>
-          <img class="profile__add-button" src="./images/add-btn-plus.svg" alt="Плюс в рамке">
+          <button type="button" class="profile__add-button"><img  src="./images/add-btn-plus.svg" alt="Плюс в рамке"></button>
         </section>
         <section class="photo-grid">
           <div class="card">
-            <img src="./images/Karachaevsk.png" alt="Каменный замок на фоне гор." class="card__image">
+            <img src="./images/karachaevsk.png" alt="Каменный замок на фоне гор." class="card__image">
             <div class="card__description">
               <h2 class="card__name">Карачаевск</h2>
-              <img src="./images/card-like-btn.svg" alt="Сердечко." class="card__like-button">
+              <button type="button" class="card__like-button"><img src="./images/card-like-btn.svg" alt="Сердечко."></button>
             </div>
           </div>
           <div class="card">
-            <img src="./images/Elbrus-mount.png" alt="Степь и гора в далеке." class="card__image">
+            <img src="./images/elbrus-mount.png" alt="Степь и гора в далеке." class="card__image">
             <div class="card__description">
               <h2 class="card__name">Гора Эльбрус</h2>
-              <img src="./images/card-like-btn.svg" alt="Сердечко." class="card__like-button">
+              <button type="button" class="card__like-button"><img src="./images/card-like-btn.svg" alt="Сердечко."></button>
             </div>
           </div>
           <div class="card">
-            <img src="./images/Dombay.png" alt="Горы и верхушка леса." class="card__image">
+            <img src="./images/dombay.png" alt="Горы и верхушка леса." class="card__image">
             <div class="card__description">
               <h2 class="card__name">Домбай</h2>
-              <img src="./images/card-like-btn.svg" alt="Сердечко." class="card__like-button">
+              <button type="button" class="card__like-button"><img src="./images/card-like-btn.svg" alt="Сердечко."></button>
             </div>
           </div>
           <div class="card">
-            <img src="./images/Elbrus-mount.png" alt="Степь и гора в далеке." class="card__image">
+            <img src="./images/elbrus-mount.png" alt="Степь и гора в далеке." class="card__image">
             <div class="card__description">
               <h2 class="card__name">Гора Эльбрус</h2>
-              <img src="./images/card-like-btn.svg" alt="Сердечко." class="card__like-button">
+              <button type="button" class="card__like-button"><img src="./images/card-like-btn.svg" alt="Сердечко."></button>
             </div>
           </div>
           <div class="card">
-            <img src="./images/Dombay.png" alt="Горы и верхушка леса." class="card__image">
+            <img src="./images/dombay.png" alt="Горы и верхушка леса." class="card__image">
             <div class="card__description">
               <h2 class="card__name">Домбай</h2>
-              <img src="./images/card-like-btn.svg" alt="Сердечко." class="card__like-button">
+              <button type="button" class="card__like-button"><img src="./images/card-like-btn.svg" alt="Сердечко."></button>
             </div>
           </div>
           <div class="card">
-            <img src="./images/Karachaevsk.png" alt="Каменный замок на фоне гор." class="card__image">
+            <img src="./images/karachaevsk.png" alt="Каменный замок на фоне гор." class="card__image">
             <div class="card__description">
               <h2 class="card__name">Карачаево-Черкесия</h2>
-              <img src="./images/card-like-btn.svg" alt="Сердечко." class="card__like-button">
+              <button type="button" class="card__like-button"><img src="./images/card-like-btn.svg" alt="Сердечко."></button>
             </div>
           </div>
         </section>
@@ -74,16 +73,18 @@
       <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
-      <section class="popup popup_hidden">
-        <div class="form">
-          <img src="./images/close-Icon.svg" alt="Крестик." class="form__close-icon">
-          <h2 class="form__title">Редактировать профиль</h2>
-          <input type="text" name="name" class="form__name">
-          <input type="text" name="description" class="form__description">
-          <button type="submit" class="form__submit-button">Сохранить</button>
+      <div class="popup popup_hidden">
+        <div class="popup__container">
+          <button type="button" class="form__close-icon"><img src="./images/close-Icon.svg" alt="Крестик."></button>
+          <form name="edit-form" class="form">
+            <h2 class="form__title">Редактировать профиль</h2>
+            <input type="text" name="name" class="form__input form__input_type_name" placeholder="Имя" value="Имя">
+            <input type="text" name="description" class="form__input form__input_type_description" placeholder="О себе" value="О себе">
+            <button class="form__submit-button" type="submit">Сохранить</button>
+          </form>>
         </div>
-      </section>
+      </div>>
     </div>
-    <script src="./pages/index.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
