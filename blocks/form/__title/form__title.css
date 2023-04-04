@@ -2,14 +2,14 @@
     font-weight: 900;
     font-size: 18px;
     line-height: 22px;
-    margin: 25px 22px 0;
+    margin: 25px 22px 45px;
 }
 
 @media screen and (min-width: 768px) {
     .form__title {
         font-size: 20px;
         line-height: 24px;
-        margin: 30px 28px 0;
+        margin: 30px 28px 38px;
     }
 }
 
@@ -17,6 +17,6 @@
     .form__title {
         font-size: 24px;
         line-height: 29px;
-        margin: 34px 36px 0;
+        margin: 34px 36px 20px;
     }
 }
