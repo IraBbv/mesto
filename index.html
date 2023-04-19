@@ -26,54 +26,13 @@
           <button type="button" class="profile__add-button"><img  src="./images/add-btn-plus.svg" alt="Плюс в рамке"></button>
         </section>
         <section class="photo-grid">
-          <div class="card">
-            <img src="./images/karach.png" alt="Каменный замок на фоне гор." class="card__image">
-            <div class="card__description">
-              <h2 class="card__name">Карачаевск</h2>
-              <button type="button" class="card__like-button"></button>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./images/elbrus.png" alt="Степь и гора в далеке." class="card__image">
-            <div class="card__description">
-              <h2 class="card__name">Гора Эльбрус</h2>
-              <button type="button" class="card__like-button"></button>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./images/dombai.png" alt="Горы и верхушка леса." class="card__image">
-            <div class="card__description">
-              <h2 class="card__name">Домбай</h2>
-              <button type="button" class="card__like-button"></button>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./images/elbrus.png" alt="Степь и гора в далеке." class="card__image">
-            <div class="card__description">
-              <h2 class="card__name">Гора Эльбрус</h2>
-              <button type="button" class="card__like-button"></button>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./images/dombai.png" alt="Горы и верхушка леса." class="card__image">
-            <div class="card__description">
-              <h2 class="card__name">Домбай</h2>
-              <button type="button" class="card__like-button"></button>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./images/karach.png" alt="Каменный замок на фоне гор." class="card__image">
-            <div class="card__description">
-              <h2 class="card__name">Карачаево-Черкесия</h2>
-              <button type="button" class="card__like-button"><img src="./images/card-like-btn.svg" alt="Сердечко."></button>
-            </div>
-          </div>
         </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
-      <div class="popup">
+<!-- Попап "Редактировать страницу" начинается -->
+      <div class="popup" id="edit-popup">
         <div class="popup__container">
           <button type="button" class="popup__close-icon"></button>
           <form name="edit-form" class="form">
@@ -81,9 +40,44 @@
             <input type="text" name="name" class="form__input form__input_type_name" placeholder="Имя" value="Имя">
             <input type="text" name="description" class="form__input form__input_type_description" placeholder="О себе" value="О себе">
             <button class="form__submit-button" type="submit">Сохранить</button>
-          </form>>
+          </form>
         </div>
-      </div>>
+      </div>
+<!-- Попап "Редактировать страницу" заканчивается -->
+<!-- Попап "Добавить место" начинается -->
+      <div class="popup" id="add-popup">
+        <div class="popup__container">
+          <button type="button" class="popup__close-icon"></button>
+          <form name="add-form" class="form">
+            <h2 class="form__title">Новое место</h2>
+            <input type="text" name="location" class="form__input form__input_type_location" placeholder="Название">
+            <input type="text" name="link" class="form__input form__input_type_link" placeholder="Ссылка на картинку">
+            <button class="form__submit-button" type="submit">Создать</button>
+          </form>
+        </div>
+      </div>
+<!-- Попап "Добавить место" заканчивается -->
+<!-- Попап с фотографией начинается -->
+      <div class="popup" id="photo-popup">
+        <div class="popup__container">
+          <button type="button" class="popup__close-icon"></button>
+          <img class="popup__image">
+          <p class="popup__subtitle"></p>
+        </div>
+      </div>
+<!-- Попап с фотографией заканчивается -->
+<!-- Шаблон для фото-элементов начинается -->
+      <template id="card-template">
+        <div class="card">
+          <img class="card__image">
+          <button type="button" class="card__trash-button"></button>
+          <div class="card__description">
+            <h2 class="card__name"></h2>
+            <button type="button" class="card__like-button"></button>
+          </div>
+        </div>
+      </template>
+<!-- Шаблон для фото-элементов заканчивается -->
     </div>
     <script src="./scripts/index.js"></script>
   </body>
