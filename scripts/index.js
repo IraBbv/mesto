@@ -47,10 +47,9 @@ const formLink = addPopup.querySelector('.form__input_type_link');
 const photoGridContainer = document.querySelector('.photo-grid');
 const cardTemplate = document.querySelector('#card-template');
 
-const photoPopup = document.querySelector('#photo-popup');
+const photoPopup = document.querySelector('.popup_type_photo');
+const photoPopupContainer = photoPopup.querySelector('.popup__container');
 const photoCloseBtn = photoPopup.querySelector('.popup__close-icon');
-const popupImage = photoPopup.querySelector('.popup__image');
-const popupSubtitle = photoPopup.querySelector('.popup__subtitle');
 
 // Функция создания новой карточки  c кнопками "лайк" и "удалить"
 const createCardElement = function(cardData) {
@@ -67,7 +66,6 @@ const createCardElement = function(cardData) {
   const handleLike = () => {
     likeBtn.classList.toggle('card__like-button_active');
   }
-
   const handleTrash = () => {
     const cardItem = trashBtn.closest('.card');
     cardItem.remove();
@@ -76,21 +74,31 @@ const createCardElement = function(cardData) {
   likeBtn.addEventListener('click', handleLike);
   trashBtn.addEventListener('click', handleTrash);
 
+  //Попап с фото начало
+  function openPhoto(item) {
+    const popupImage = photoPopup.querySelector('.popup__image');
+    const popupSubtitle = photoPopup.querySelector('.popup__subtitle');
+    
+    if (item.target===cardImage) {
+      const imageElement = item.target;
+      photoPopup.classList.add('popup_opened');
+      popupImage.src = imageElement.src;
+      popupSubtitle.textContent = imageElement.alt;
+    }
+  }
+
+  function closePhoto() {
+    photoPopup.classList.remove('popup_opened');
+  }
+
+  cardElement.addEventListener('click', openPhoto);
+  photoCloseBtn.addEventListener('click', closePhoto);
+  //  Попап с фото конец
+
   return cardElement;
 }
 
-// //Попап с фото начало
-//   function openPhoto() {
-//     photoPopup.classList.add('popup_opened');
-//     popupImage.src.value = cardImage.link.textContent;
-//     popupSubtitle.value = cardName.textContent;
-//   }
-//   function closePhoto() {
-//     photoPopup.classList.remove('popup_opened');
-//   }
-//   cardImage.addEventListener('click', openPhoto);
-//   photoCloseBtn.addEventListener('click', closePhoto);
-//   //Попап с фото конец
+
 
 //Добавление изначальных карточек в профиль
 initialCards.forEach((item) => {
@@ -131,17 +139,21 @@ function closeAddPopup() {
   addPopup.classList.remove('popup_opened');
 }
 
-// Функция сохранения введённой информации в окно добавления
+// Функция добавления новой карточки
 function handleAddFormSubmit (evt) {
   evt.preventDefault();
 
-  // const newCard = {
-  //   name: `${formLocation.textContent}`,
-  //   link: `${formLink.textContent}`;
-  // };
+  const name = formLocation.value;
+  const link = formLink.value;
+  const data = {
+    name: `${name}`,
+    link: `${link}`
+  };
 
-  createCardElement(newCard);
-  closeAddPopup();
+  const newCard = createCardElement(data);
+  photoGridContainer.prepend(newCard);
+
+  closeAddPopup();  
 }
 
 // Слушатели событий
