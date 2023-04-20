@@ -1,30 +1,31 @@
 // Массив первоначальных карточек
 const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
 
 // Обозначаем элементы
 const profileName = document.querySelector('.profile__name');
@@ -32,13 +33,13 @@ const profileDescription = document.querySelector('.profile__description');
 const editBtn = document.querySelector('.profile__edit-button');
 const addBtn = document.querySelector('.profile__add-button');
 
-const editPopup = document.querySelector('#edit-popup');
+const editPopup = document.querySelector('.popup_type_edit');
 const editFormElement = editPopup.querySelector('.form');
 const editCloseBtn = editPopup.querySelector('.popup__close-icon');
 const formName = editPopup.querySelector('.form__input_type_name');
 const formDescription = editPopup.querySelector('.form__input_type_description');
 
-const addPopup = document.querySelector('#add-popup');
+const addPopup = document.querySelector('.popup_type_add');
 const addFormElement = addPopup.querySelector('.form');
 const addCloseBtn = addPopup.querySelector('.popup__close-icon');
 const formLocation = addPopup.querySelector('.form__input_type_location');
@@ -99,25 +100,24 @@ const createCardElement = function(cardData) {
 }
 
 
-
-//Добавление изначальных карточек в профиль
+//Добавить изначальные карточки в профиль
 initialCards.forEach((item) => {
   const element = createCardElement(item);
 
   photoGridContainer.appendChild(element);
 })
 
-// Функция открытия попапа редактирования, содержимое профиля будет в форме
+// Попап редактирования, функции открытия и закрытия
 function openEditPopup() {
     editPopup.classList.add('popup_opened');
     formName.value = profileName.textContent;
     formDescription.value = profileDescription.textContent;
 }
 
-//Функция закрытия попапа редактирования
 function closeEditPopup() {
     editPopup.classList.remove('popup_opened');
 }
+
 
 // Функция сохранения введённой информации в окно редактирования
 function handleEditFormSubmit (evt) {
@@ -129,15 +129,16 @@ function handleEditFormSubmit (evt) {
     closeEditPopup();
 }
 
-//Функция открытия попапа добавления
+
+//Попап "добавить карточку", функции открытия и закрытия
 function openAddPopup() {
   addPopup.classList.add('popup_opened');
 }
 
-//Функция закрытия попапа добавления
 function closeAddPopup() {
   addPopup.classList.remove('popup_opened');
 }
+
 
 // Функция добавления новой карточки
 function handleAddFormSubmit (evt) {
@@ -155,6 +156,7 @@ function handleAddFormSubmit (evt) {
 
   closeAddPopup();  
 }
+
 
 // Слушатели событий
 editBtn.addEventListener('click', openEditPopup);
