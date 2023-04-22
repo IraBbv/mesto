@@ -52,8 +52,20 @@ const photoPopup = document.querySelector('.popup_type_photo');
 const photoPopupContainer = photoPopup.querySelector('.popup__container');
 const photoCloseBtn = photoPopup.querySelector('.popup__close-icon');
 
+
+// Функция открытия попап
+function openPopup(popupElement) {
+  popupElement.classList.add('popup_opened');
+}
+
+// Функция закрытия попап
+function closePopup(element) {
+  element.classList.remove('popup_opened');
+}
+
+
 // Функция создания новой карточки  c кнопками "лайк" и "удалить"
-const createCardElement = function(cardData) {
+function createCardElement(cardData) {
   const cardElement = cardTemplate.content.querySelector('.card').cloneNode(true);
   const cardImage = cardElement.querySelector('.card__image');
   const cardName = cardElement.querySelector('.card__name');
@@ -76,24 +88,20 @@ const createCardElement = function(cardData) {
   trashBtn.addEventListener('click', handleTrash);
 
   //Попап с фото начало
-  function openPhoto(item) {
+  function openPhoto(cardImage) {
     const popupImage = photoPopup.querySelector('.popup__image');
     const popupSubtitle = photoPopup.querySelector('.popup__subtitle');
     
     if (item.target===cardImage) {
       const imageElement = item.target;
-      photoPopup.classList.add('popup_opened');
+      openPopup(photoPopup);
       popupImage.src = imageElement.src;
       popupSubtitle.textContent = imageElement.alt;
     }
   }
 
-  function closePhoto() {
-    photoPopup.classList.remove('popup_opened');
-  }
-
   cardElement.addEventListener('click', openPhoto);
-  photoCloseBtn.addEventListener('click', closePhoto);
+  photoCloseBtn.addEventListener('click', () => closePopup(photoPopup));
   //  Попап с фото конец
 
   return cardElement;
@@ -107,15 +115,12 @@ initialCards.forEach((item) => {
   photoGridContainer.appendChild(element);
 })
 
-// Попап редактирования, функции открытия и закрытия
+
+// Попап редактирования функция с введённой информацией
 function openEditPopup() {
-    editPopup.classList.add('popup_opened');
+    openPopup(editPopup);
     formName.value = profileName.textContent;
     formDescription.value = profileDescription.textContent;
-}
-
-function closeEditPopup() {
-    editPopup.classList.remove('popup_opened');
 }
 
 
@@ -126,17 +131,7 @@ function handleEditFormSubmit (evt) {
     profileName.textContent = formName.value;
     profileDescription.textContent = formDescription.value;
     
-    closeEditPopup();
-}
-
-
-//Попап "добавить карточку", функции открытия и закрытия
-function openAddPopup() {
-  addPopup.classList.add('popup_opened');
-}
-
-function closeAddPopup() {
-  addPopup.classList.remove('popup_opened');
+    closePopup(editPopup);
 }
 
 
@@ -154,15 +149,17 @@ function handleAddFormSubmit (evt) {
   const newCard = createCardElement(data);
   photoGridContainer.prepend(newCard);
 
-  closeAddPopup();  
+  addFormElement.reset();
+
+  closePopup(addPopup);
 }
 
 
 // Слушатели событий
 editBtn.addEventListener('click', openEditPopup);
-editCloseBtn.addEventListener('click', closeEditPopup);
+editCloseBtn.addEventListener('click', () => closePopup(editPopup));
 editFormElement.addEventListener('submit', handleEditFormSubmit);
 
-addBtn.addEventListener('click', openAddPopup);
-addCloseBtn.addEventListener('click', closeAddPopup);
+addBtn.addEventListener('click', () => openPopup(addPopup));
+addCloseBtn.addEventListener('click', () => closePopup(addPopup));
 addFormElement.addEventListener('submit', handleAddFormSubmit);
