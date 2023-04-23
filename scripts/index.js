@@ -88,7 +88,7 @@ function createCardElement(cardData) {
   trashBtn.addEventListener('click', handleTrash);
 
   //Попап с фото начало
-  function openPhoto(cardImage) {
+  function openPhoto(item) {
     const popupImage = photoPopup.querySelector('.popup__image');
     const popupSubtitle = photoPopup.querySelector('.popup__subtitle');
     
