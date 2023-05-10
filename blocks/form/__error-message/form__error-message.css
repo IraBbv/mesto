@@ -1,0 +1,28 @@
+.form__error-message {
+    color: #FF0000;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 5px 22px 0;
+    max-width: calc(100% - 44px);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 768px) {
+    .form__error-message {
+        margin-left: 28px;
+        margin-right: 28px;
+        max-width: calc(100% - 56px);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .form__error-message {
+        margin-left: 36px;
+        margin-right: 36px;
+        max-width: calc(100% - 72px);
+    }
+}

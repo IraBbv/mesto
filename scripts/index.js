@@ -27,7 +27,9 @@ const initialCards = [
 ];
 
 
-// Обозначаем элементы
+// Объявляем переменные
+const popupList = Array.from(document.querySelectorAll('.popup'));
+
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 const editBtn = document.querySelector('.profile__edit-button');
@@ -53,16 +55,42 @@ const photoPopupContainer = photoPopup.querySelector('.popup__container');
 const photoCloseBtn = photoPopup.querySelector('.popup__close-icon');
 
 
+// Первоначальные данные полей формы редактирования
+formName.value = profileName.textContent;
+formDescription.value = profileDescription.textContent;
+
+
+// Функция закрытия попап нажатием клавыши ESC
+function escapeClosePopup (evt) {
+  const popupElement = evt.target.closest('.popup');
+
+  if (evt.key === 'Escape') {
+    closePopup(popupElement);
+  }
+}
+
 // Функция открытия попап
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
+  popupElement.addEventListener('keydown', escapeClosePopup);
 }
 
 // Функция закрытия попап
-function closePopup(element) {
-  element.classList.remove('popup_opened');
+function closePopup(popupElement) {
+  popupElement.classList.remove('popup_opened');
+  popupElement.removeEventListener('keydown', escapeClosePopup);
 }
 
+// Функция закрытия попап кликом на оверлей
+function overlayClosePopup(popupElement) {
+  popupElement.addEventListener('mousedown', (event) => {
+    isOverlay = event.target.classList.contains('popup');
+    if (isOverlay) {
+      closePopup(popupElement);
+    }
+    event.stopPropagation();
+  });
+};
 
 // Функция создания новой карточки  c кнопками "лайк" и "удалить"
 function createCardElement(cardData) {
@@ -116,14 +144,6 @@ initialCards.forEach((item) => {
 })
 
 
-// Попап редактирования функция с введённой информацией
-function openEditPopup() {
-    openPopup(editPopup);
-    formName.value = profileName.textContent;
-    formDescription.value = profileDescription.textContent;
-}
-
-
 // Функция сохранения введённой информации в окно редактирования
 function handleEditFormSubmit (evt) {
     evt.preventDefault();
@@ -156,10 +176,14 @@ function handleAddFormSubmit (evt) {
 
 
 // Слушатели событий
-editBtn.addEventListener('click', openEditPopup);
+editBtn.addEventListener('click', () => openPopup(editPopup));
 editCloseBtn.addEventListener('click', () => closePopup(editPopup));
 editFormElement.addEventListener('submit', handleEditFormSubmit);
 
 addBtn.addEventListener('click', () => openPopup(addPopup));
 addCloseBtn.addEventListener('click', () => closePopup(addPopup));
 addFormElement.addEventListener('submit', handleAddFormSubmit);
+
+popupList.forEach(formElement => {
+  overlayClosePopup(formElement);
+});
