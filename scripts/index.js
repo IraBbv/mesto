@@ -29,6 +29,7 @@ const initialCards = [
 
 // Объявляем переменные
 const popupList = Array.from(document.querySelectorAll('.popup'));
+const closeBtnList = Array.from(document.querySelectorAll('.popup__close-icon'));
 
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
@@ -37,13 +38,11 @@ const addBtn = document.querySelector('.profile__add-button');
 
 const editPopup = document.querySelector('.popup_type_edit');
 const editFormElement = editPopup.querySelector('.form');
-const editCloseBtn = editPopup.querySelector('.popup__close-icon');
 const formName = editPopup.querySelector('.form__input_type_name');
 const formDescription = editPopup.querySelector('.form__input_type_description');
 
 const addPopup = document.querySelector('.popup_type_add');
 const addFormElement = addPopup.querySelector('.form');
-const addCloseBtn = addPopup.querySelector('.popup__close-icon');
 const formLocation = addPopup.querySelector('.form__input_type_location');
 const formLink = addPopup.querySelector('.form__input_type_link');
 
@@ -53,6 +52,8 @@ const cardTemplate = document.querySelector('#card-template');
 const photoPopup = document.querySelector('.popup_type_photo');
 const photoPopupContainer = photoPopup.querySelector('.popup__container');
 const photoCloseBtn = photoPopup.querySelector('.popup__close-icon');
+const popupImage = photoPopup.querySelector('.popup__image');
+const popupSubtitle = photoPopup.querySelector('.popup__subtitle');
 
 
 // Первоначальные данные полей формы редактирования
@@ -62,29 +63,28 @@ formDescription.value = profileDescription.textContent;
 
 // Функция закрытия попап нажатием клавыши ESC
 function escapeClosePopup (evt) {
-  const popupElement = evt.target.closest('.popup');
-
   if (evt.key === 'Escape') {
-    closePopup(popupElement);
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
 }
 
 // Функция открытия попап
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
-  popupElement.addEventListener('keydown', escapeClosePopup);
+  document.addEventListener('keydown', escapeClosePopup);
 }
 
 // Функция закрытия попап
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
-  popupElement.removeEventListener('keydown', escapeClosePopup);
+  document.removeEventListener('keydown', escapeClosePopup);
 }
 
 // Функция закрытия попап кликом на оверлей
 function overlayClosePopup(popupElement) {
   popupElement.addEventListener('mousedown', (event) => {
-    isOverlay = event.target.classList.contains('popup');
+    const isOverlay = event.target.classList.contains('popup');
     if (isOverlay) {
       closePopup(popupElement);
     }
@@ -117,13 +117,11 @@ function createCardElement(cardData) {
 
   //Попап с фото начало
   function openPhoto(item) {
-    const popupImage = photoPopup.querySelector('.popup__image');
-    const popupSubtitle = photoPopup.querySelector('.popup__subtitle');
-    
     if (item.target===cardImage) {
       const imageElement = item.target;
       openPopup(photoPopup);
       popupImage.src = imageElement.src;
+      popupImage.alt = imageElement.alt;
       popupSubtitle.textContent = imageElement.alt;
     }
   }
@@ -176,14 +174,24 @@ function handleAddFormSubmit (evt) {
 
 
 // Слушатели событий
-editBtn.addEventListener('click', () => openPopup(editPopup));
-editCloseBtn.addEventListener('click', () => closePopup(editPopup));
+editBtn.addEventListener('click', () => {
+  openPopup(editPopup);
+  formName.value = profileName.textContent;
+  formDescription.value = profileDescription.textContent;
+});
 editFormElement.addEventListener('submit', handleEditFormSubmit);
 
 addBtn.addEventListener('click', () => openPopup(addPopup));
-addCloseBtn.addEventListener('click', () => closePopup(addPopup));
-addFormElement.addEventListener('submit', handleAddFormSubmit);
+addFormElement.addEventListener('submit', () => {
+  const sbmButton = addFormElement.querySelector('.form__submit-button');
+  handleAddFormSubmit;
+  deactivateButton (sbmButton, {inactiveButtonClass: 'form__submit-button_inactive'});
+});
 
 popupList.forEach(formElement => {
   overlayClosePopup(formElement);
+});
+closeBtnList.forEach( button => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
 });
