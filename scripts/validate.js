@@ -3,7 +3,6 @@ function activateError(formElement, inputElement, obj) {
   const errorMessage = formElement.querySelector(`.${inputElement.name}-error`);
 
   inputElement.classList.add(obj.inputErrorClass);
-  console.log(obj.inputErrorClass);
   errorMessage.textContent = inputElement.validationMessage;
 };
 
@@ -61,6 +60,10 @@ function setEventListeners (formElement, obj) {
   const submitButtonElement = formElement.querySelector(obj.submitButtonSelector);
 
   toggleButtonState(inputList, submitButtonElement, obj);
+
+  formElement.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+  });
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {

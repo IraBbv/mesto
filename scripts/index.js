@@ -127,7 +127,6 @@ function createCardElement(cardData) {
   }
 
   cardElement.addEventListener('click', openPhoto);
-  photoCloseBtn.addEventListener('click', () => closePopup(photoPopup));
   //  Попап с фото конец
 
   return cardElement;
@@ -143,20 +142,16 @@ initialCards.forEach((item) => {
 
 
 // Функция сохранения введённой информации в окно редактирования
-function handleEditFormSubmit (evt) {
-    evt.preventDefault();
-    
-    profileName.textContent = formName.value;
-    profileDescription.textContent = formDescription.value;
-    
-    closePopup(editPopup);
+function handleEditFormSubmit () {
+  profileName.textContent = formName.value;
+  profileDescription.textContent = formDescription.value;
+
+  closePopup(editPopup);
 }
 
 
 // Функция добавления новой карточки
-function handleAddFormSubmit (evt) {
-  evt.preventDefault();
-
+function handleAddFormSubmit () {
   const name = formLocation.value;
   const link = formLink.value;
   const data = {
@@ -183,10 +178,11 @@ editFormElement.addEventListener('submit', handleEditFormSubmit);
 
 addBtn.addEventListener('click', () => openPopup(addPopup));
 addFormElement.addEventListener('submit', () => {
+  handleAddFormSubmit();
   const sbmButton = addFormElement.querySelector('.form__submit-button');
-  handleAddFormSubmit;
   deactivateButton (sbmButton, {inactiveButtonClass: 'form__submit-button_inactive'});
 });
+  
 
 popupList.forEach(formElement => {
   overlayClosePopup(formElement);
