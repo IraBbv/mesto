@@ -6,8 +6,8 @@ class Card {
   }
 
   createCard() {
-    this.element = this.getTemplate();
-    this.setEventListeners();
+    this.element = this._getTemplate();
+    this._setEventListeners();
 
     const cardImage = this.element.querySelector('.card__image');
     cardImage.src = this.image;
@@ -17,25 +17,25 @@ class Card {
     return this.element;
   }
 
-  getTemplate() {
+  _getTemplate() {
     const cardElement = document.querySelector(this.templateSelector).content.querySelector('.card').cloneNode(true);
     return cardElement;
   }
 
-  setEventListeners() {
+  _setEventListeners() {
     this.element.querySelector('.card__like-button').addEventListener('click', () => {
-      this.handleLike();
+      this._handleLike();
     });
     this.element.querySelector('.card__trash-button').addEventListener('click', () => {
-      this.handleDelete();
+      this._handleDelete();
     });
   }
 
-  handleLike() {
+  _handleLike() {
     this.element.querySelector('.card__like-button').classList.toggle('card__like-button_active');
   }
 
-  handleDelete() {
+  _handleDelete() {
     const cardItem = this.element.querySelector('.card__trash-button').closest('.card');
     cardItem.remove();
   }

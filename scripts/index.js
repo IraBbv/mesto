@@ -77,12 +77,12 @@ class AddFormValidator extends FormValidator {
     super (obj, formElement)
   }
 
-  setEventListeners() {
-    super.setEventListeners();
+  _setEventListeners() {
+    super._setEventListeners();
 
     this.formElement.addEventListener('submit', () => {
       const sbmButton = this.formElement.querySelector('.form__submit-button');
-      this.deactivateButton(sbmButton);
+      this._deactivateButton(sbmButton);
     });
   }
 }
