@@ -57,7 +57,6 @@ const popupImage = photoPopup.querySelector('.popup__image');
 const popupSubtitle = photoPopup.querySelector('.popup__subtitle');
 
 const formSelectorsData = {
-  formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit-button',
   inactiveButtonClass: 'form__submit-button_inactive',
@@ -65,58 +64,29 @@ const formSelectorsData = {
 }
 
 
-// Создаём классы валидации для форм
-class EditFormValidator extends FormValidator {
-  constructor(obj, formElement) {
-    super (obj, formElement)
-  }
-}
+// Функция создания карточки
+function createCard(data) {
+  const card = new Card(data, '#card-template', handleCardClick);
+  const cardElement = card.constructCard();
 
-class AddFormValidator extends FormValidator {
-  constructor(obj, formElement) {
-    super (obj, formElement)
-  }
-
-  _setEventListeners() {
-    super._setEventListeners();
-
-    this.formElement.addEventListener('submit', () => {
-      const sbmButton = this.formElement.querySelector('.form__submit-button');
-      this._deactivateButton(sbmButton);
-    });
-  }
-}
-
-// Функция добавления карточки
-function addCard(data) {
-  const card = new Card(data, '#card-template');
-  const cardElement = card.createCard();
-  photoGridContainer.prepend(cardElement);
-  
-  cardElement.addEventListener('click', openPhoto);
+  return cardElement;
 }
 
 
 // Функция открытия фото в модальном окне
-function openPhoto(item) {
-  if (item.target.hasAttribute('alt')) {
-    const imageElement = item.target;
-    openPopup(photoPopup);
-    popupImage.src = imageElement.src;
-    popupImage.alt = imageElement.alt;
-    popupSubtitle.textContent = imageElement.alt;
-  }
+function handleCardClick(name, link) {
+  popupImage.src = link;
+  popupImage.alt = name;
+  popupSubtitle.textContent = name;
+  openPopup(photoPopup);
 }
 
 
 // Добавление первоначальных карточек
-initialCards.slice().reverse().forEach((item) => {
-  addCard(item);
+initialCards.forEach((item) => {
+  const cardElem = createCard(item);
+  photoGridContainer.append(cardElem);
 })
-
-// Первоначальные данные полей формы редактирования
-formName.value = profileName.textContent;
-formDescription.value = profileDescription.textContent;
 
 
 // Функция открытия попап
@@ -169,7 +139,8 @@ function handleAddFormSubmit () {
     link: `${link}`
   };
 
-  addCard(data);
+  const newCard = createCard(data);
+  photoGridContainer.prepend(newCard);
 
   addFormElement.reset();
 
@@ -178,8 +149,8 @@ function handleAddFormSubmit () {
 
 
 // Включаем валидацию форм
-const editValidator = new EditFormValidator (formSelectorsData, editFormElement);
-const addValidator = new AddFormValidator (formSelectorsData, addFormElement);
+const editValidator = new FormValidator (formSelectorsData, editFormElement);
+const addValidator = new FormValidator (formSelectorsData, addFormElement);
 
 editValidator.enableValidation();
 addValidator.enableValidation();
@@ -190,10 +161,14 @@ editBtn.addEventListener('click', () => {
   openPopup(editPopup);
   formName.value = profileName.textContent;
   formDescription.value = profileDescription.textContent;
+  editValidator.resetValidation();
 });
 editFormElement.addEventListener('submit', handleEditFormSubmit);
 
-addBtn.addEventListener('click', () => openPopup(addPopup));
+addBtn.addEventListener('click', () => {
+  openPopup(addPopup);
+  addValidator.resetValidation();
+});
 addFormElement.addEventListener('submit', () => {
   handleAddFormSubmit();
 });
