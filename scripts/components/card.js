@@ -1,9 +1,9 @@
 class Card {
-  constructor(data, templateSelector, handleCardClick) {
-    this.title = data.name;
-    this.image = data.link;
+  constructor({ name, link }, templateSelector, handleCardClick) {
+    this.title = name;
+    this.image = link;
     this.templateSelector = templateSelector;
-    this.handleCardClick = handleCardClick;
+    this._handleCardClick = handleCardClick;
   }
 
   constructCard() {
@@ -35,7 +35,7 @@ class Card {
     });
 
     this._cardImage.addEventListener('click', () => {
-      this.handleCardClick(this.title, this.image)
+      this._handleOpenImagePopup();
     });
   }
 
@@ -47,6 +47,10 @@ class Card {
     const cardItem = this.trashButton.closest('.card');
     cardItem.remove();
   }
+
+  _handleOpenImagePopup() {
+    this._handleCardClick({ name: this.title, link: this.image});
+  }
 }
 
-export {Card};
+export { Card };
