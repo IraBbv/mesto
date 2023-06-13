@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Ирина Бибаева">
     <meta name="keywords" content="Фото, поделиться, места, Россия">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
   </head>
   <body class="root">
     <div class="page">
       <header class="header">
-        <img src="./images/logo.svg" alt="Лого Место." class="header__logo">
+        <img src="<%=require('./images/logo.svg')%>" alt="Лого Место." class="header__logo">
       </header>
       <main class="content">
         <section class="profile">
-          <img src="./images/avatar.png" alt="Фото Жак-Ив Кусто." class="profile__avatar">
+          <img src="<%=require('./images/avatar.png')%>" alt="Фото Жак-Ив Кусто." class="profile__avatar">
           <div class="profile__info">
             <div class="profile__edit-box">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -23,7 +22,7 @@
             </div>
             <p class="profile__description">Исследователь океана</p>
           </div>
-          <button type="button" class="profile__add-button"><img  src="./images/add-btn-plus.svg" alt="Плюс в рамке"></button>
+          <button type="button" class="profile__add-button"><img  src="<%=require('./images/add-btn-plus.svg')%>" alt="Плюс в рамке"></button>
         </section>
         <section class="photo-grid">
         </section>
@@ -87,14 +86,5 @@
         </div>
       </template>
 <!-- Шаблон для фото-элементов заканчивается -->
-    <script type="module" src="./pages/index.js"></script>
-    <script type="module" src="./scripts/utils/constants.js"></script>
-    <script type="module" src="./scripts/components/card.js"></script>
-    <script type="module" src="./scripts/components/formValidator.js"></script>
-    <script type="module" src="./scripts/components/section.js"></script>
-    <script type="module" src="./scripts/components/popup.js"></script>
-    <script type="module" src="./scripts/components/popupWithImage.js"></script>
-    <script type="module" src="./scripts/components/popupWithForm.js"></script>
-    <script type="module" src="./scripts/components/userInfo.js"></script>
   </body>
 </html>

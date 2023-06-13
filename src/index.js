@@ -1,3 +1,7 @@
+// Подключение css файлов для вебпака
+import './pages/index.css';
+
+// Импорты js
 import { initialCards, formSelectorsData, 
   popupEditSelector, 
   popupAddSelector, 
@@ -6,15 +10,15 @@ import { initialCards, formSelectorsData,
   profileNameSelector,
   profileDescriptionSelector, 
   editBtn, addBtn,
-  editFormElement, addFormElement} from '../scripts/utils/constants.js';
-import { Card } from '../scripts/components/card.js';
-import { FormValidator } from '../scripts/components/formValidator.js';
-import { Section } from '../scripts/components/section.js';
-import { PopupWithImage } from '../scripts/components/popupWithImage.js';
-import { PopupWithForm } from '../scripts/components/popupWithForm.js';
-import { UserInfo } from '../scripts/components/userInfo.js';
-
-
+  editFormElement, addFormElement} from './scripts/utils/constants.js';
+  import { Card } from './scripts/components/card.js';
+  import { FormValidator } from './scripts/components/formValidator.js';
+  import { Section } from './scripts/components/section.js';
+  import { PopupWithImage } from './scripts/components/popupWithImage.js';
+  import { PopupWithForm } from './scripts/components/popupWithForm.js';
+  import { UserInfo } from './scripts/components/userInfo.js';
+  
+  
 // Попап с картинкой
 const popupImage = new PopupWithImage(popupImageSelector);
 popupImage.setEventListeners();
