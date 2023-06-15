@@ -5,7 +5,7 @@ class Section {
         this._container = document.querySelector(containerSelector);
     }
 
-    renderItem() {
+    renderItems() {
         this._items.forEach(item => {
             this.addItem(this._renderer(item));
         })

@@ -1,5 +1,5 @@
 // Подключение css файлов для вебпака
-import './pages/index.css';
+import './index.css';
 
 // Импорты js
 import { initialCards, formSelectorsData, 
@@ -10,31 +10,26 @@ import { initialCards, formSelectorsData,
   profileNameSelector,
   profileDescriptionSelector, 
   editBtn, addBtn,
-  editFormElement, addFormElement} from './scripts/utils/constants.js';
-  import { Card } from './scripts/components/card.js';
-  import { FormValidator } from './scripts/components/formValidator.js';
-  import { Section } from './scripts/components/section.js';
-  import { PopupWithImage } from './scripts/components/popupWithImage.js';
-  import { PopupWithForm } from './scripts/components/popupWithForm.js';
-  import { UserInfo } from './scripts/components/userInfo.js';
-  
+  editFormElement, addFormElement} from '../scripts/utils/constants.js';
+  import { Card } from '../scripts/components/card.js';
+  import { FormValidator } from '../scripts/components/formValidator.js';
+  import { Section } from '../scripts/components/section.js';
+  import { PopupWithImage } from '../scripts/components/popupWithImage.js';
+  import { PopupWithForm } from '../scripts/components/popupWithForm.js';
+  import { UserInfo } from '../scripts/components/userInfo.js';
   
 // Попап с картинкой
 const popupImage = new PopupWithImage(popupImageSelector);
 popupImage.setEventListeners();
 
-
 // Попапы с формами
 const userInfo = new UserInfo(
   {nameElementSelector: profileNameSelector, 
    descriptionElementSelector: profileDescriptionSelector});
-
-const popupEdit = new PopupWithForm(popupEditSelector, handleEditFormSubmit);
-popupEdit.setEventListeners();
-
-const popupAdd = new PopupWithForm(popupAddSelector, handleAddFormSubmit);
-popupAdd.setEventListeners();
-
+const popupEditProfile = new PopupWithForm(popupEditSelector, handleEditFormSubmit);
+popupEditProfile.setEventListeners();
+const popupAddCard = new PopupWithForm(popupAddSelector, handleAddFormSubmit);
+popupAddCard.setEventListeners();
 
 // Функция создания карточки
 function createCard({ name, link }) {
@@ -48,41 +43,35 @@ const cardSection = new Section(
   {items: initialCards.reverse(),
   renderer: createCard}, 
   photoGridContainerSelector);
-cardSection.renderItem();
-
+cardSection.renderItems();
 
 // Функция сохранения введённой информации в окно редактирования
 function handleEditFormSubmit () {
-  userInfo.setUserInfo(popupEdit.getInputValues());
-  popupEdit.close();
+  userInfo.setUserInfo(popupEditProfile.getInputValues());
+  popupEditProfile.close();
 }
-
 
 // Функция добавления новой карточки через форму
 function handleAddFormSubmit () {
-  const data = popupAdd.getInputValues();
+  const data = popupAddCard.getInputValues();
   const newCard = createCard({name: data.location, link: data.link});
   cardSection.addItem(newCard);
-  popupAdd.close();
+  popupAddCard.close();
 }
-
 
 // Включаем валидацию форм
 const editValidator = new FormValidator (formSelectorsData, editFormElement);
 const addValidator = new FormValidator (formSelectorsData, addFormElement);
-
 editValidator.enableValidation();
 addValidator.enableValidation();
 
-
 // Слушатели событий для открытия попапов с формами
 editBtn.addEventListener('click', () => {
-  popupEdit.open();
-  popupEdit.setInputValues(userInfo.getUserInfo());
+  popupEditProfile.open();
+  popupEditProfile.setInputValues(userInfo.getUserInfo());
   editValidator.resetValidation();
 });
-
 addBtn.addEventListener('click', () => {
-  popupAdd.open();
+  popupAddCard.open();
   addValidator.resetValidation();
 });
