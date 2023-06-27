@@ -1,0 +1,15 @@
+.profile__avatar-change-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    visibility: hidden;
+    opacity: 0;
+    /*transition: visibility 0.5s, opacity 0.5s linear;*/
+}
+
+
+/*.profile__avatar:hover .profile__avatar-change-icon{
+    visibility: visible;
+    opacity: 1;
+}

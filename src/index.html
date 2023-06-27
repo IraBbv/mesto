@@ -14,7 +14,10 @@
       </header>
       <main class="content">
         <section class="profile">
-          <img src="<%=require('./images/avatar.png')%>" alt="Фото Жак-Ив Кусто." class="profile__avatar">
+          <div class="profile__avatar-container">
+            <img src="<%=require('./images/avatar.png')%>" alt="Фото Жак-Ив Кусто." class="profile__avatar">
+            <img src="<%=require('./images/change-avatar-icon.svg')%>" alt="Карандаш." class="profile__avatar-change-icon">
+          </div>
           <div class="profile__info">
             <div class="profile__edit-box">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -47,13 +50,27 @@
         </div>
       </div>
 <!-- Попап "Редактировать страницу" заканчивается -->
+<!-- Попап "Обновить аватар" начинается -->
+      <div class="popup popup_type_change-avatar">
+        <div class="popup__container">
+          <button type="button" class="popup__close-icon"></button>
+          <form name="change-avatar" class="form" novalidate>
+            <h2 class="form__title">Обновить аватар</h2>
+            <input type="url" name="avatar" class="form__input form__input_type_avatar"
+              placeholder="Ссылка на аватар" required>
+            <span class="form__error-message avatar-error"></span>
+            <button class="form__submit-button" type="submit" disabled>Сохранить</button>
+          </form>
+        </div>
+      </div>
+<!-- Попап "Обновить аватар" заканчивается -->
 <!-- Попап "Добавить место" начинается -->
       <div class="popup popup_type_add">
         <div class="popup__container">
           <button type="button" class="popup__close-icon"></button>
           <form name="add" class="form" novalidate>
             <h2 class="form__title">Новое место</h2>
-            <input type="text" name="location" class="form__input form__input_type_location" minlength="2" maxlength="30" 
+            <input type="text" name="location" class="form__input form__input_type_location" minlength="2" maxlength="30"
               placeholder="Название" required>
             <span class="form__error-message location-error"></span>
             <input name="link" class="form__input form__input_type_link" type="url" placeholder="Ссылка на картинку" 
@@ -73,6 +90,16 @@
         </div>
       </div>
 <!-- Попап с фотографией заканчивается -->
+<!-- Попап с подтверждением начинается -->
+      <div class="popup popup_type_confirm">
+        <div class="popup__container">
+          <button type="button" class="popup__close-icon"></button>
+          <form name="delete-confirm" class="form" novalidate>
+            <button class="form__submit-button" type="submit">Да</button>
+          </form>
+        </div>
+      </div>
+<!-- Попап с подтверждением заканчивается -->
     </div>
 <!-- Шаблон для фото-элементов начинается -->
       <template id="card-template">
