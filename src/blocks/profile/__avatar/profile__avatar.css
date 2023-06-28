@@ -1,13 +1,14 @@
 .profile__avatar {
     border-radius: 50%;
     width: 120px;
+    height: 120px;
     margin: 0 auto;
     object-fit: cover;
-    z-index: 1;
+    z-index: 0;
     transition: opacity 0.5s ease-in-out;
 }
 
-.profile__avatar-container:hover .profile__avatar{
+.profile__change-avatar-button:hover .profile__avatar{
     opacity: 0.3;
 }
 
@@ -15,42 +16,4 @@
     .profile__avatar {
         margin: 0;
     }
-}
-
-@media screen and (min-width: 768px) {
-    .profile__avatar {
-        justify-self: start;
-        margin-right: 20px;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    .profile__avatar {
-        margin-right: 30px;
-    }
-}
-
-.profile__avatar-container {
-    display: flex;
-    position: relative;
-    border-radius: 50%;
-}
-
-.profile__avatar-change-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-75%, -50%);
-    margin: auto;
-    visibility: hidden;
-    opacity: 0;
-    width: 26px;
-    transition: visibility 0.5s, opacity 0.5s ease-in-out;
-    z-index: 3;
-}
-
-
-.profile__avatar-container:hover .profile__avatar-change-icon{
-    visibility: visible;
-    opacity: 1;
 }

@@ -5,9 +5,21 @@
     text-align: center;
     margin: 10px auto 0;
     text-overflow: ellipsis;
-    max-width: 180px;
+    max-width: 250px;
     overflow: hidden;
     white-space: nowrap; 
+}
+
+@media screen and (min-width: 426px) {
+    .profile__description {
+        max-width: 230px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .profile__description {
+        max-width: 280px;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -15,8 +27,14 @@
         margin-top: 15px;
         font-size: 16px;
         line-height: 20px;
-        max-width: 220px;
         margin-left: 0;
+        max-width: 240px;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .profile__description {
+        max-width: 330px;
     }
 }
 
@@ -25,6 +43,6 @@
         font-size: 18px;
         line-height: 22px;
         margin-top: 8px;
-        max-width: 280px;
+        max-width: 420px;
     }
 }

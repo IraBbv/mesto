@@ -6,9 +6,21 @@
     margin: 0;
     text-align: center;
     text-overflow: ellipsis;
-    max-width: 200px;
+    max-width: 240px;
     overflow: hidden;
     white-space: nowrap; 
+}
+
+@media screen and (min-width: 426px) {
+    .profile__name {
+        max-width: 200px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .profile__name {
+        max-width: 250px;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -16,7 +28,19 @@
         font-size: 34px;
         line-height: 40px;
         text-align: left;
-        max-width: 250px;
+        max-width: 240px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .profile__name {
+        max-width: 280px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .profile__name {
+        max-width: 320px;
     }
 }
 
@@ -24,7 +48,6 @@
     .profile__name {
         font-size: 42px;
         line-height: 48px;
-        max-width: 320px;
-        
+        max-width: 380px;
     }
 }
