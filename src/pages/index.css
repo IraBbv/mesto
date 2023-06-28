@@ -53,6 +53,6 @@
 @import url(../blocks/form/__input/_type/form__input_type_link.css);
 @import url(../blocks/form/__input/_error/form__input_error.css);
 @import url(../blocks/form/__submit-button/form__submit-button.css);
-@import url(../blocks/content/__confirm-button-margin/content__confirm-button-margin.css);
+@import url(../blocks/root/__confirm-button-margin/root__confirm-button-margin.css);
 @import url(../blocks/form/__submit-button/_inactive/form__submit-button_inactive.css);
 @import url(../blocks/form/__error-message/form__error-message.css);
